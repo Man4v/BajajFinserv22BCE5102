@@ -1,5 +1,4 @@
 from flask import Flask, request, jsonify
-from datetime import datetime
 
 app = Flask(__name__)
 
@@ -47,8 +46,8 @@ def process_data(data):
         "concat_string": concat_str
     }
 
-@app.route("/process", methods=["POST"])
-def process():
+@app.route("/bfhl", methods=["POST"])
+def bfhl():
     try:
         data = request.get_json()
         if not data or "data" not in data:
@@ -74,3 +73,5 @@ def process():
             "error": str(e)
         }), 500
 
+if __name__ == "__main__":
+    app.run(debug=True)
